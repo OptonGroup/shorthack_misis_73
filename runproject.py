@@ -9,8 +9,7 @@ def t2():
     cmd = 'npm start --prefix frontend/'
     os.system(cmd)
 
-from threading import Thread
-task1 = Thread(target=t1)
-task2 = Thread(target=t2)
-task1.run()
-task2.run()
+import subprocess
+
+subprocess.call(['gnome-terminal', '-x', 'fastapi', 'dev', 'backend/server.py'])
+subprocess.call(['gnome-terminal', '-x', 'npm', 'start', '--prefix', 'frontend/'])
