@@ -126,6 +126,9 @@ export default function Profile() {
 	const newNote = () => {
 		setABS(false);
 		setnoteDescription('');
+		setind(0);
+		setkkb(0);
+		setnoteDescription('');
 	}
 
 
@@ -192,7 +195,7 @@ export default function Profile() {
 			<div className='SVO'>
 				<div className={abs ? 'd-none zametka_new' : 'zametka_new'}>
 					<input className='but' type='button' value='Save' onClick={(e) => addNote()}/>
-					<textarea type='text' className='fs-3 w-100 h-100 gg' placeholder='Write text...' onChange={(e) => (setnoteDescription(e.target.value))}/>
+					<textarea value={noteDescription} type='text' className='fs-3 w-100 h-100 gg' placeholder='Write text...' onChange={(e) => (setnoteDescription(e.target.value))}/>
 				</div>
 				<div className={!abs ? 'd-none zametka_old' : 'zametka_old'}>
 					<input className='but' type='button' value='Save' onClick={(e) => saveNote(kkb)}/>
