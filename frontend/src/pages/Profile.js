@@ -22,6 +22,7 @@ export default function Profile() {
 
 	const [abs, setABS] = useState(false);
 	const [ind, setind] = useState(0);
+	const [kkb, setkkb] = useState(0);
 
 	const getNotes = () => {
 		axios.get('http://127.0.0.1:8000/notes/get', {
@@ -100,9 +101,10 @@ export default function Profile() {
 	}
 
 	const saveNote = (index) => {
+		console.log(kkb);
 		axios.get('http://127.0.0.1:8000/notes/save', {
 			params: {
-				'id': index,
+				'id': kkb,
 				'note_title': noteDescription,
 			},
 			headers: {
@@ -121,16 +123,22 @@ export default function Profile() {
 		});
 	}
 
+	const newNote = () => {
+		setABS(false);
+		setnoteDescription('');
+	}
+
 
 	const signOut = () => {
 		localStorage.removeItem("temitope");
 		navigate("/");
 	};
 
-	const showNote = (index) => {
+	const showNote = (index, ind2) => {
 		setnoteDescription(notes[index].title);
 		setind(index);
-		setABS(true)
+		setkkb(ind2);
+		setABS(true);
 	}
 
 	return (
@@ -150,12 +158,14 @@ export default function Profile() {
 						<p className='fs-3 wtext text-bold'>Notes</p>
 					</div>
 					
-					<p className='wtext fs-2 mr-3' role='button'>+</p>
+					<p className='wtext fs-2 mr-3' role='button' onClick={(e) => (newNote())}>+</p>
 				</div>
 
 				<div className={isClikedF ? 'close content_notes' : 'content_notes'}>
 					{notes.map((note, index) => (
-						<div className='box' key={index} onClick={(e) => (showNote(index))}>
+						<div className='box' onClick={(e) => (
+							showNote(index, note.id)
+						)}>
 							<p className='wtext fs-3'>{note.title}</p>
 						</div>
 					))}
@@ -185,7 +195,7 @@ export default function Profile() {
 					<textarea type='text' className='fs-3 w-100 h-100 gg' placeholder='Write text...' onChange={(e) => (setnoteDescription(e.target.value))}/>
 				</div>
 				<div className={!abs ? 'd-none zametka_old' : 'zametka_old'}>
-					<input className='but' type='button' value='Save' onClick={(e) => saveNote(ind)}/>
+					<input className='but' type='button' value='Save' onClick={(e) => saveNote(kkb)}/>
 					<textarea value={noteDescription} type='text' className='fs-3 w-100 h-100 gg' placeholder='Write text...' onChange={(e) => (setnoteDescription(e.target.value))}/>
 				</div>		
 			</div>
