@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from jose import jwt 
 from pydantic import BaseModel
-from database import db
+from .database import db
 
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')

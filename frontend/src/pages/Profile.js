@@ -25,7 +25,7 @@ export default function Profile() {
 	const [kkb, setkkb] = useState(0);
 
 	const getNotes = () => {
-		axios.get('http://127.0.0.1:8000/notes/get', {
+		axios.get('http://5.42.220.238:8000/notes/get', {
 			params: {
 				'username': fetchUser()['username']
 			},
@@ -52,7 +52,7 @@ export default function Profile() {
 
 
 	const getTodos = () => {
-		axios.get('http://127.0.0.1:8000/todos/get', {
+		axios.get('http://5.42.220.238:8000/todos/get', {
 			params: {
 				'username': fetchUser()['username']
 			},
@@ -73,7 +73,7 @@ export default function Profile() {
 	}
 
 	const addNote = () => {
-		axios.get('http://127.0.0.1:8000/notes/add', {
+		axios.get('http://5.42.220.238:8000/notes/add', {
 			params: {
 				'username': fetchUser()['username'],
 				'note_title': noteDescription,
@@ -102,7 +102,7 @@ export default function Profile() {
 
 	const saveNote = (index) => {
 		console.log(kkb);
-		axios.get('http://127.0.0.1:8000/notes/save', {
+		axios.get('http://5.42.220.238:8000/notes/save', {
 			params: {
 				'id': kkb,
 				'note_title': noteDescription,

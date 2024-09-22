@@ -189,8 +189,16 @@ body{
     background-color: transparent;
     color: white;
     border: none;
+    height: 100%;
 }
 
+.zametka_new{
+    height: 100%
+}
+
+.zametka_old{
+    height: 100%;
+}
 
 
 .but{

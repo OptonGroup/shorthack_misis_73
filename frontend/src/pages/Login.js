@@ -15,7 +15,7 @@ export default function SignUp(){
         return;
         } else {
         // make api call to our backend. we'll leave thisfor later
-            axios.get('http://127.0.0.1:8000/login', {
+            axios.get('http://5.42.220.238:8000/login', {
                 params: {
                     'username': username,
                     'password': password
